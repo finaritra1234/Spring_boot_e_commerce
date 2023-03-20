@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmls:th"http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+	<meta name="generator" content="Hugo 0.88.1">
+	<title>produit</title>
+
+
+
+
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.0.0/css/bootstrap.min.css" />
+	<style>
+		.bd-placeholder-img {
+			font-size: 1.125rem;
+			text-anchor: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			user-select: none;
+		}
+
+		@media (min-width: 768px) {
+			.bd-placeholder-img-lg {
+				font-size: 3.5rem;
+			}
+		}
+	</style>
+
+
+	<!-- Custom styles for this template -->
+	<link th:href="@{../css/signin.css}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+	<main class="form-signin">
+		  <form th:action="@{/register}" th:object="${user}" method="post">
+			<img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+			<h1 class="h3 mb-3 fw-normal">Creer compte</h1>
+			<div class="form-floating">
+				<input type="text" class="form-control" id="nom" name="nom"  placeholder="Nom complet">
+				<label for="">Nom complet</label>
+			</div>
+			<div class="form-floating">
+				<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+				<label for="">Email address</label>
+			</div>
+			<div class="form-floating">
+				<input type="text" class="form-control" id="adrs" name="adrs" placeholder="Adresse complet">
+				<label for="">Adresse complet</label>
+			</div>
+
+			<div class="form-floating">
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+				<label for="">Password</label>
+			</div>
+
+			
+			<button class="w-100 btn btn-lg btn-primary" type="submit">Creer</button>
+			<p class="mt-5 mb-3 text-muted">&copy; 2021–2022</p>
+		</form>
+		  <span style="margin-top: 10px">Deja un compte? <a class="linkControl" 
+                                                                      th:href="@{/login}">Connecter ici</a></span>
+	</main>
+
+
+
+</body>
+
+</html>

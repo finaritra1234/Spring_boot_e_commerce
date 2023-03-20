@@ -1,0 +1,68 @@
+<!doctype html>
+<html xmls:th"http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+	<meta name="generator" content="Hugo 0.88.1">
+	<title>test</title>
+
+
+
+
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.0.0/css/bootstrap.min.css" />
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<div class="container">
+		<div th:if="${validationError}" th:each="error : ${validationError}">
+			<label class="text-danger" th:text="${error}"></label>
+		</div>
+		<h1>ユーザー情報一覧</h1>
+		<form th:action="@{/user/listUpdate}" th:object="${userListParam}" th:method="post">
+			<div class="text-end">
+				<input type="submit" class="btn btn-primary" value="　更新　">
+			</div><br />
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Qte</th>
+						<th>produit</th>
+
+						<th>user</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user, st : *{cartItemDataList}" class="align-middle">
+						<td>
+							<label th:text="${user.id}"></label>
+							<input type="hidden" th:field="*{cartItemDataList[__${st.index}__].id}">
+						</td>
+						<td>
+							<input type="text" class="form-control"
+								th:field="*{cartItemDataList[__${st.index}__].qte_com}">
+						</td>
+						<td>
+							<input type="text" class="form-control"
+								th:field="*{cartItemDataList[__${st.index}__].produit}">
+						</td>
+						<td>
+							<input type="text" class="form-control"
+								th:field="*{cartItemDataList[__${st.index}__].user}">
+						</td>
+
+
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+
+</html>

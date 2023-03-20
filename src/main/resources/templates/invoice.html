@@ -1,0 +1,364 @@
+<!doctype html>
+<html xmls:th"http://www.thymeleaf.org">
+
+<head>
+	<!-- Meta Tag -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name='copyright' content=''>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Title Tag  -->
+	<title>Shopping free.</title>
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" th:shref="@{/images/logo_fina.png}">
+	<!-- Web Font -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+		rel="stylesheet">
+
+	<!-- StyleSheet -->
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" th:href="@{/css/magnific-popup.min.css}">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" th:href="@{/css/font-awesome.css}">
+	<!-- Fancybox -->
+	<link rel="stylesheet" th:href="@{/css/jquery.fancybox.min.css}">
+	<!-- Themify Icons -->
+	<link rel="stylesheet" th:href="@{/css/themify-icons.css}">
+	<!-- Nice Select CSS -->
+	<link rel="stylesheet" th:href="@{/css/niceselect.css}">
+	<!-- Animate CSS -->
+	<link rel="stylesheet" th:href="@{/css/animate.css}">
+	<!-- Flex Slider CSS -->
+	<link rel="stylesheet" th:href="@{/css/flex-slider.min.css}">
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" th:href="@{/css/owl-carousel.css}">
+	<!-- Slicknav -->
+	<link rel="stylesheet" th:href="@{/css/slicknav.min.css}">
+
+	<!-- Eshop StyleSheet -->
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+
+	<style>
+		.section-title h2 {
+			font-size: 30px;
+			margin-bottom: 0;
+
+			position: relative;
+			color: rgb(0, 0, 64);
+			font-weight: 700;
+			margin-bottom: 10px;
+			padding-bottom: 15px;
+		}
+	</style>
+
+
+</head>
+
+<body class="js">
+
+	<!-- Header -->
+	<header class="header shop">
+		<!-- Topbar -->
+		<div class="topbar">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-12 col-12">
+						<!-- Top Left -->
+						<div class="top-left">
+							<ul class="list-main">
+
+								<li th:if="${userDetails != null}"><i class="ti-email"></i> [[${#request.remoteUser}]]
+								</li>
+							</ul>
+						</div>
+						<!--/ End Top Left -->
+					</div>
+					<div class="col-lg-7 col-md-12 col-12">
+						<!-- Top Right -->
+						<div class="right-content">
+							<ul class="list-main">
+
+								<li th:if="${userDetails != null}">
+									<form th:action="@{/logout}" method="post">
+
+										<input class="ti-power-off" type="submit" value="Se deconnecter"
+											style="background-color: #f7941d;color: white;padding: 4px;border: aliceblue;" />
+									</form>
+								</li>
+								<li><a href="/login" th:if="${userDetails == null}"><i
+											class="ti-power-off"></i>Login</a></li>
+
+							</ul>
+						</div>
+						<!-- End Top Right -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Topbar -->
+		<div class="middle-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-12">
+						<!-- Logo -->
+						<div class="logo">
+							<a href="/"><img th:src="@{images/logo_fina.png}" alt="logo"></a>
+						</div>
+						<!--/ End Logo -->
+
+						<div class="mobile-nav"></div>
+					</div>
+					<div class="col-lg-8 col-md-7 col-12">
+						<div class="search-bar-to">
+							<div class="search-ba">
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-12">
+						<div class="right-bar">
+							<!-- Search Form -->
+
+							<div class="sinlge-bar shopping">
+								<a href="#" class="single-icon"><i class="ti-shopping-cart"></i> <span
+										class="total-count" th:text="${cartCount}">2</span></a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-inner">
+			<div class="container">
+				<div class="cat-nav-head">
+					<div class="row">
+
+						<div class="col-lg-9 col-12">
+							<div class="menu-area">
+								<!-- Main Menu -->
+								<nav class="navbar navbar-expand-lg">
+									<div class="navbar-collapse">
+										<div class="nav-inner">
+											<ul class="nav main-menu menu navbar-nav">
+												<li><a href="/">Accueil</a></li>
+												<li class="active"><a href="/shop">Produit</a></li>
+
+												<li><a href="#">Achat<i class="ti-angle-down"></i>
+														<ul class="dropdown">
+															<li><a href="/cart">Panier</a></li>
+
+														</ul>
+												</li>
+
+											</ul>
+										</div>
+									</div>
+								</nav>
+								<!--/ End Main Menu -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ End Header Inner -->
+
+	</header>
+	<!-- Breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="bread-inner">
+						<ul class="bread-list">
+							<li><a href="/">Accueil<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a href="#">Payment</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+	<div class="product-area section">
+		<div class="container">
+
+			<main>
+				<div class="alert alert-success alert-dismissible fade show" th:if="${msg}" role="alert">
+					<span class="text-center" th:text="${msg}"></span>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+
+				<div class="row g-5">
+					<div class="col-md-5 col-lg-4 order-md-last">
+						<h4 class="d-flex justify-content-between align-items-center mb-3">
+							<span class="text-primary">Pannier</span>
+							<span class="badge bg-primary rounded-pill" th:text="${cartCount}">3</span>
+						</h4>
+						<ul class="list-group mb-3">
+							<li class="list-group-item d-flex justify-content-between">
+								<strong>Produit</strong>
+								<strong>Sous total($)</strong>
+							</li>
+							<th:block th:each="item, iStat : ${cart}">
+								<li class="list-group-item d-flex justify-content-between lh-sm"
+									th:with="produit = ${item.produit}">
+									<div>
+										<h6 class="my-0">[[${produit.nom}]]<span>([[${item.qte_com}]])</span></h6>
+										<small class="text-muted" th:text="'Made in '+${produit.date_creation}">Brief
+											description</small>
+									</div>
+									<span class="text-muted productSubtotal">[[${item.subtotal}]]</span>
+								</li>
+							</th:block>
+
+							<li class="list-group-item d-flex justify-content-between">
+								<span>Total (USD)</span>
+								<strong id="totalAmount"></strong>
+
+							</li>
+						</ul>
+
+
+					</div>
+					<div class="col-md-7 col-lg-8">
+						<h4 class="mb-3">Votre information</h4>
+
+						<div class="row">
+
+
+							<div class="col">
+
+								<div class="row g-3">
+
+									<div class="col">
+										<span class="text">Nom: [[${user.nom}]]</span>
+
+										<span class="text">Email: [[${user.email}]]</span>
+										<hr>
+										<span class="text">Ville: [[${user.ville}]]</span>
+										<hr>
+										<span class="text">Adresse: [[${user.adrs}]]</span>
+										<hr>
+										<span class="text">Code postal: [[${user.cp}]]</span>
+										<hr>
+										<span class="text">Tel: [[${user.tel}]]</span>
+									</div>
+									<div class="col">
+										<a href="/invoice/print" target="__blank" style="color:white;" class="btn">Imprimer</a>
+									</div>
+
+
+
+								</div>
+
+
+
+							</div>
+
+
+
+						</div>
+					</div>
+			</main>
+		</div>
+	</div>
+
+	<!-- Start Footer Area -->
+	<footer class="footer">
+		<!-- Footer Top -->
+		<div class="footer-top section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer about">
+							<div class="logo">
+								<a href="/"><img th:src="@{/images/logo_fina.png}" alt="#"></a>
+							</div>
+							<p class="text">Site de vente des produits Creer par rakotonavalona heritiana Finaritra.
+							</p>
+							<p class="call">Pour plus d'information.? Contacter nous; nous sommes disponible 24h/24
+								et
+								7j/7<span><a href="tel:+26342507977">+261 34 25 079 77</a></span></p>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-5 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Information</h4>
+							<ul>
+								<li><a href="#">Rakotonavalona Heritiana Finaritra</a></li>
+								<li><a href="#">rakotonavalonaheritiana@gmail.com</a></li>
+								<li><a href="#">Andrainjato Fianarantsoa</a></li>
+								<li><a href="#">+261 34 25 079 77</a></li>
+
+							</ul>
+						</div>
+
+					</div>
+
+
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer social">
+							<h4>Partenaire</h4>
+							<!-- Single Widget -->
+							<div class="contact">
+								<ul>
+									<li>Famille.</li>
+									<li>Emit.</li>
+									<li>Amis</li>
+
+								</ul>
+							</div>
+							<!-- End Single Widget -->
+							<ul>
+								<li><a href="#"><i class="ti-facebook"></i></a></li>
+								<li><a href="#"><i class="ti-twitter"></i></a></li>
+								<li><a href="#"><i class="ti-flickr"></i></a></li>
+								<li><a href="#"><i class="ti-instagram"></i></a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Footer Top -->
+		<div class="copyright">
+			<div class="container">
+				<div class="inner">
+					<div class="row">
+						<div class="col-lg-6 col-12">
+							<div class="left">
+								<p>Copyright © 2022 <a href="#" target="_blank">.</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /End Footer Area -->
+
+	<script src="/webjars/jquery/1.9.1/jquery.min.js"></script>
+
+
+	<script th:src="@{/js/shopping_cart.js}"></script>
+
+
+
+</body>
+
+</html>
